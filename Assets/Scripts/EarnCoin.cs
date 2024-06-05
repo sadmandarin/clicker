@@ -9,6 +9,9 @@ public class EarnCoin : MonoBehaviour
     [SerializeField]
     private MoneyContainer moneyContainer;
 
+    [SerializeField]
+    private CurrentEnergy currEnergy;
+
     private Button button;
 
     [SerializeField]
@@ -16,6 +19,8 @@ public class EarnCoin : MonoBehaviour
 
     [SerializeField]
     private CurrentLevelContainer currLvl;
+    private float elapsedTime = 0;
+    private float interval = 1f;
 
     private void Start()
     {
@@ -24,13 +29,41 @@ public class EarnCoin : MonoBehaviour
         button.onClick.AddListener(EarnMoney);
     }
 
+    private void Update()
+    {
+        elapsedTime += Time.deltaTime;
+
+        // Если прошло достаточно времени для вызова метода
+        if (elapsedTime >= interval)
+        {
+            // Вызываем ваш метод
+            AddEnergy();
+
+            // Сбрасываем прошедшее время
+            elapsedTime = 0f;
+        }
+    }
+
 
 
     private void EarnMoney()
     {
-        moneyContainer.AddMoney(CurrAmount());
+        if (currEnergy.Energy >= levelContainer.Condition[currLvl.Level].LevelAmount)
+        {
+            moneyContainer.AddMoney(CurrAmount());
 
-        Debug.Log(" " + moneyContainer.Money);
+            currEnergy.DecreaseEnergy(CurrAmount());
+
+            Debug.Log(" " + moneyContainer.Money);
+        }
+        
+    }
+    private void AddEnergy()
+    {
+        if (currEnergy.Energy < levelContainer.Condition[currLvl.Level].MaxEnergy)
+        {
+            currEnergy.AddEnergy();
+        }
     }
 
     private int CurrAmount()
@@ -45,4 +78,8 @@ public class EarnCoin : MonoBehaviour
 
         return 0;
     }
+
+    
+
+   
 }

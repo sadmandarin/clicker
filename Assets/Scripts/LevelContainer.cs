@@ -26,6 +26,9 @@ public class LevelCondition
     [SerializeField]
     private int levelAmount;
 
+    [SerializeField]
+    private int maxEnergy;
+
     public int Level
     {
         get { return level; }
@@ -39,5 +42,10 @@ public class LevelCondition
     public int LevelAmount
     {
         get { return levelAmount; }
+    }
+
+    public int MaxEnergy
+    {
+        get { return maxEnergy; }
     }
 }

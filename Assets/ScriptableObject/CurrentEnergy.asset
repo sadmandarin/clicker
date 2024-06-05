@@ -9,7 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 932ca799609083f43bba0085a3a642cc, type: 3}
-  m_Name: CurrentLevelContainer
+  m_Script: {fileID: 11500000, guid: bcba190ecbe4ac64d8c7676682344c37, type: 3}
+  m_Name: CurrentEnergy
   m_EditorClassIdentifier: 
-  level: 1
+  energy: 16
+  currentLvl: {fileID: 11400000, guid: 8d197be38bfc91d4a8d110e3b27bc1aa, type: 2}
+  levelContainer: {fileID: 11400000, guid: 4a7deabb4effe3e40bf6dc196e4d6c87, type: 2}

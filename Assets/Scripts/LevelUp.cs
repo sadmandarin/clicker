@@ -16,6 +16,9 @@ public class LevelUp : MonoBehaviour
     [SerializeField]
     private CurrentLevelContainer currLvl;
 
+    [SerializeField]
+    private CurrentEnergy currEnergy;
+
     private void Start()
     {
         button = GetComponent<Button>();
@@ -25,17 +28,13 @@ public class LevelUp : MonoBehaviour
 
     void UpLvl()
     {
-        for (int i = 0; i < levelContainer.Condition.Count; i++)
+        if (moneyContainer.Money >= levelContainer.Condition[currLvl.Level].MoneyToUpgrade)
         {
-            if (i == currLvl.Level)
-            {
-                if (moneyContainer.Money >= levelContainer.Condition[i].MoneyToUpgrade)
-                {
-                    currLvl.LevelUp();
+            moneyContainer.Money = moneyContainer.Money - levelContainer.Condition[currLvl.Level].MoneyToUpgrade;
 
-                    moneyContainer.Money = moneyContainer.Money - levelContainer.Condition[i].MoneyToUpgrade;
-                }
-            }
-        }
+            currLvl.LevelUp();
+
+            currEnergy.Energy = levelContainer.Condition[currLvl.Level].MaxEnergy;
+        }   
     }
 }

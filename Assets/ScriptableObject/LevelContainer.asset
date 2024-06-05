@@ -16,15 +16,20 @@ MonoBehaviour:
   - level: 0
     moneyToUpgrade: 300
     levelAmount: 5
+    maxEnergy: 150
   - level: 1
     moneyToUpgrade: 600
     levelAmount: 10
+    maxEnergy: 300
   - level: 2
     moneyToUpgrade: 1200
     levelAmount: 15
+    maxEnergy: 600
   - level: 3
     moneyToUpgrade: 2000
     levelAmount: 20
+    maxEnergy: 1000
   - level: 4
     moneyToUpgrade: 5000
     levelAmount: 30
+    maxEnergy: 1500
